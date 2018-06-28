@@ -1,0 +1,14 @@
+.
+├── ABOUT.md
+├── code.sh
+├── DESIGN.md
+├── README.md
+├── resources
+│   └── home
+│       └── dnanexus
+│           ├── Miniconda2-latest-Linux-x86_64.sh
+│           └── tree.txt
+└── src
+    └── code.sh
+
+4 directories, 7 files
