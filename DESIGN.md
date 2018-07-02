@@ -13,7 +13,7 @@
 2. Create reference
 3. Predict CNVs
 
-* CNV analysis requires comparisons between a 'reference' sample and a 'test' sample. These former can be the reference genome build or an individual, such as in the case of NIPT testing. Where the reference is an individual, the gender of the sample is a required input to app stage 2 to correctly normalise X and
+* CNV analysis in WisecondorX requires comparisons between a 'reference' sample and a 'test' sample. The reference sample must be generated from \*.bam files of healthy individuals using the `WisecondorX newref` command. Seperate references containing all male and all female samples are required.
 
 # Design
 DNA nexus app can should be run from the command line as:

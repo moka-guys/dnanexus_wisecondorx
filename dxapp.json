@@ -1,0 +1,73 @@
+{
+  "name": "wisecondorx",
+  "title": "WisecondorX",
+  "summary": "Call copy number variants (CNVs) from whole genome sequencing alignments",
+  "tags": [
+    "Structural Variation",
+    "VariantCalling"
+  ],
+  "dxapi": "1.0.0",
+  "inputSpec": [
+    {
+      "name": "input_bam",
+      "label": "Input BAM (*.bam)",
+      "help": "BAM file generated from aligning WGS reads to reference genome",
+      "class": "file",
+      "patterns": ["*.bam"],
+      "optional": false
+    },
+    {
+      "name": "input_bam_index",
+      "label": "Input BAM index (*.bai)",
+      "help": "BAM index generated fdrom aligning WGS reads to hg19 reference using BWA.",
+      "class": "file",
+      "patterns": ["*.bai"],
+      "optional": false
+    },
+    {
+      "name": "ref_bams",
+      "label": "Reference BAM files",
+      "help": "BAM files from healthy individuals to produce WisecondorX reference set",
+      "class": "array:file",
+      "optional": false
+    },
+    {
+      "name": "bin_size"
+    }
+  ],
+  "outputSpec": [
+    {
+      "name": "wisecondorx",
+      "label": "WisecondorX output files",
+      "help": "WisecondorX output files",
+      "class": "array:file"
+    }
+  ],
+  "runSpec": {
+    "systemRequirementsByRegion": {
+      "aws:us-east-1": {
+        "main": {
+          "instanceType": "mem2_ssd1_x4"
+        }
+      }
+    },
+    "systemRequirements": {
+      "main": {
+        "instanceType": "mem2_ssd1_x4"
+      }
+    },
+    "file": "src/code.sh",
+    "release": "14.04",
+    "interpreter": "bash",
+    "distribution": "Ubuntu"
+  },
+  "access": {
+    "network": [
+      "*"
+    ]
+  },
+  "details": {
+    "CenterForMedicalGeneticsGhent/WisecondorX release": "v0.2.0",
+    "github release": "v1.0"
+  }
+}
