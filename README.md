@@ -6,6 +6,7 @@ WisecondorX requires reference BAM files from 'healthy' individuals to create th
 These will be generated in-house to ensure data generation is equal for test samples.
 
 ## Todo
+* Add BAM index files to input spec (takes too long to index)
 * Complete readme.
 
 * The following parameters require adding to the dxapp.json file to become optional inputs:

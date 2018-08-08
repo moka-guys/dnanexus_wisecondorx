@@ -36,31 +36,26 @@ function wcx_wrapper {
 } 
 
 # Download input data
-# Download BAM files for reference ; refs - array of healthy male and female bams, identified by '_M_' or '_F_' in filename
-# Download BAM file for sample ; test_bams - input BAM file. Must be aligned to same reference genome as reference sample bams
+# Download BAM files for reference ; refs_bams - array of healthy male and female bams, identified by '_M_' or '_F_' in filename
+# Download BAM file for sample ; input_bam - input BAM file. Must be aligned to same reference genome as reference sample bams
+dx-download-all-inputs
 
-function main {
-	dx-download-all-inputs
+# Install conda. Set to beginning of path variable for python calls
+bash Miniconda2-latest-Linux-x86_64.sh -b -p $HOME/miniconda
+source miniconda/bin/activate
 
-	exit 1
-}
+# Install WisecondorX
+ conda install -y -c bioconda wisecondorx=0.1
 
-# # Install conda. Set to beginning of path variable for python calls
-# bash Miniconda2-latest-Linux-x86_64.sh -b -p $HOME/miniconda
-# source miniconda/bin/activate
+# Create output directory
+outdir=out/wisecondorx
+mkdir -p $outdir
 
-# # Install WisecondorX
-# conda install -f -y -c conda-forge -c bioconda wisecondorx
-
-# # Create output directory
-# outdir=out/wisecondorx
-# mkdir -p $outdir
-
-# # Convert all bams to numpy zip files
-# for file in $(find . -iname *.bam); do
-# 	prefix=${file%%.bam}
-# 	WisecondorX $file ${prefix}.npz --binsize $convert_binsize --retdist $convert_retdist --retthres $conver_retthresh
-# done
+# Convert all bams to numpy zip files
+for file in $(find . -iname *.bam); do
+	prefix=${file%%.bam}
+	WisecondorX convert $file ${prefix}.npz --binsize $convert_binsize --retdist $convert_retdist --retthres $conver_retthresh
+done
 
 # # Create reference directories
 # male_dir = "$HOME/male"
