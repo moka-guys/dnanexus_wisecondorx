@@ -17,22 +17,11 @@
       "optional": false
     },
     {
-      "name": "input_bam_index",
-      "label": "Input BAM index (*.bai)",
-      "help": "BAM index generated fdrom aligning WGS reads to hg19 reference using BWA.",
-      "class": "file",
-      "patterns": ["*.bai"],
-      "optional": false
-    },
-    {
       "name": "ref_bams",
       "label": "Reference BAM files",
       "help": "BAM files from healthy individuals to produce WisecondorX reference set",
       "class": "array:file",
       "optional": false
-    },
-    {
-      "name": "bin_size"
     }
   ],
   "outputSpec": [
@@ -44,13 +33,6 @@
     }
   ],
   "runSpec": {
-    "systemRequirementsByRegion": {
-      "aws:us-east-1": {
-        "main": {
-          "instanceType": "mem2_ssd1_x4"
-        }
-      }
-    },
     "systemRequirements": {
       "main": {
         "instanceType": "mem2_ssd1_x4"

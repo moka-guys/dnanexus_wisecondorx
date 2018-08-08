@@ -1,14 +1,15 @@
 .
 ├── ABOUT.md
-├── code.sh
 ├── DESIGN.md
+├── dxapp.json
 ├── README.md
 ├── resources
 │   └── home
 │       └── dnanexus
 │           ├── Miniconda2-latest-Linux-x86_64.sh
-│           └── tree.txt
+│           ├── tree.txt
+│           └── wisecondorx-0.2.0-py27_1.tar.bz2
 └── src
     └── code.sh
 
-4 directories, 7 files
+4 directories, 8 files
