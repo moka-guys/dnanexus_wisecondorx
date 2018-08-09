@@ -17,10 +17,18 @@
       "optional": false
     },
     {
+      "name": "input_bam_index",
+      "label": "Input BAM index (*.bai)",
+      "help": "BAM file index generated from aligning WGS reads to reference genome",
+      "class": "file",
+      "patterns": ["*.bai"],
+      "optional": false
+    },
+    {
       "name": "ref_bams",
-      "label": "Reference BAM files",
-      "help": "BAM files from healthy individuals to produce WisecondorX reference set",
-      "class": "array:file",
+      "label": "Reference BAM files (*.gz)",
+      "help": "Compressed BAM and corresponding index files from healthy individuals to produce WisecondorX reference set",
+      "class": "file",
       "optional": false
     }
   ],
