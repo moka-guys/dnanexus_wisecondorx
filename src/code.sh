@@ -6,14 +6,14 @@ set -e -x -o pipefail
 function wcx_command {
 	# Call Wisecondor X to predict CNVs
 	# Args: (input.npz, reference.npz)
-    WisecondorX predict $1 $2 ${outdir}/${1%%npz} \
-		--minrefbins $min_ref_bins
-		--maskrepeats $mask_repeats
-		--alpha $alpha
-		--beta $beta
-		--blacklist $blacklist
-		--bed
-		--plot
+    WisecondorX predict $1 $2 ${outdir}/${1%%npz} --bed --plot\
+		# --minrefbins $min_ref_bins
+		# --maskrepeats $mask_repeats
+		# --alpha $alpha
+		# --beta $beta
+		# --blacklist $blacklist
+		# --bed
+		# --plot
 }
 
 function wcx_gender {
@@ -73,12 +73,12 @@ for file in ${refs_bams_path}/*.npz; do
   	fi
 done
 
-# # Create references for Male and Female samples
+# Create references for Male and Female samples
 WisecondorX newref male/*.npz reference_male.npz --gender 'M' --cpus 4 # --binsize $ref_binsize --refsize $ref_refsize
 WisecondorX newref female/*.npz reference_female.npz --gender 'F' --cpus 4 # --binsize $ref_binsize --refsize $ref_refsizess
 
 # Run WisecondorX
-wcx_run ${input_bam_prefix}.npz
+wcx_run $(dirname $input_bam_path)/*.npz
 
 # # Upload output data
 # dx-upload-all-outputs
