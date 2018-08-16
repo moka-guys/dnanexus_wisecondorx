@@ -6,7 +6,7 @@
 ├── resources
 │   └── home
 │       └── dnanexus
-│           ├── Miniconda2-latest-Linux-x86_64.sh
+│           ├── Miniconda2-latest-Linux-x86_64.sh.gz
 │           └── tree.txt
 └── src
     └── code.sh
