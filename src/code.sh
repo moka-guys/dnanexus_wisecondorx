@@ -6,7 +6,7 @@ set -e -x -o pipefail
 function wcx_command {
 	# Call Wisecondor X to predict CNVs
 	# Args: (input.npz, reference.npz)
-    WisecondorX predict $1 $2 ${outdir}/${1%%npz} --bed --plot\
+    WisecondorX predict $1 $2 ${outdir}/${1%%.npz} --bed --plot\
 		# --minrefbins $min_ref_bins
 		# --maskrepeats $mask_repeats
 		# --alpha $alpha
@@ -52,34 +52,11 @@ conda install -y -c bioconda wisecondorx=0.1
 outdir=out/wisecondorx
 mkdir -p $outdir
 
-# Unzip reference data
-tar -xzvf $ref_bams_path
-ref_bams_dir=$(dirname $ref_bams_path)
-
-# Convert all bams to numpy zip files
-for file in $(find $ref_bams_dir -iname "*.bam"); do
-	prefix=${file%%.bam}
-	WisecondorX convert $file ${prefix}.npz # --binsize $convert_binsize --retdist $convert_retdist --retthres $convert_retthresh
-done
-
-# Create reference directories
-male_dir="$HOME/male"
-female_dir="$HOME/female"
-mkdir -p $male_dir $female_dir
-# Separate the male and female reference sample npz files into respective directories
-for file in *.npz; do
-	if [[ $(wcx_gender $file) =~ "male" ]]; then mv $file $male_dir 
-	elif [[ $(wcx_gender $file) =~ "female" ]]; then mv $file $female_dir
-  	fi
-done
-
-# Create references for Male and Female samples
-WisecondorX newref male/*.npz reference_male.npz --gender 'M' --cpus 4 # --binsize $ref_binsize --refsize $ref_refsize
-WisecondorX newref female/*.npz reference_female.npz --gender 'F' --cpus 4 # --binsize $ref_binsize --refsize $ref_refsizess
-
-# Run WisecondorX
+# Convert input bam to numpy zip file for wisecondorx
 mv $input_bam_index $(dirname $input_bam_path)
 WisecondorX convert $input_bam_path ${input_bam_prefix}.npz
+
+# Run WisecondorX
 wcx_run ${input_bam_prefix}.npz
 
 # Upload output data
