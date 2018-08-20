@@ -16,21 +16,15 @@ function wcx_command {
 		# --plot
 }
 
-function wcx_gender {
-	# Function to check gender of WisecondorX .npz file
-	# Args: input.npz
-	local gender=$(WisecondorX gender $1)
-	echo "$gender"
-}
-
 function wcx_run {
 	# Run WisecondorX dependent on input sample gender
 	# Args: input.npz
 	input_npz=$1
+	local gender=$(WisecondorX gender $input_npz)
 	# Run with appropriate reference for gender
-	if [[ $(wcx_gender $input_npz) =~ "female" ]]; then
+	if [[ $gender =~ "female" ]]; then
 		$(wcx_command $input_npz reference_female.npz)
-	elif [[ $(wcx_gender $input_npz) =~ "male" ]]; then
+	elif [[ $gender =~ "male" ]]; then
 		$(wcx_command $input_npz reference_male.npz)
 	fi
 } 
@@ -46,7 +40,7 @@ bash Miniconda2-latest-Linux-x86_64.sh -b -p $HOME/miniconda
 export PATH="$HOME/miniconda/bin:$PATH"
 
 # Install WisecondorX
-conda install -y -c bioconda wisecondorx=0.1
+conda install -f -y -c conda-forge -c bioconda wisecondorx=0.2.0
 
 # Create output directory
 outdir=out/wisecondorx
@@ -54,7 +48,7 @@ mkdir -p $outdir
 
 # Convert input bam to numpy zip file for wisecondorx
 mv $input_bam_index $(dirname $input_bam_path)
-WisecondorX convert $input_bam_path ${input_bam_prefix}.npz
+WisecondorX convert $input_bam_path ${input_bam_prefix}.npz # -binsize --retdist --retthres --gender --gonmapr
 
 # Run WisecondorX
 wcx_run ${input_bam_prefix}.npz
