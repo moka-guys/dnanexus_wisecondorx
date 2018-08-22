@@ -27,5 +27,11 @@ Chromosome segments | *_segments.bed
 ## How does this app work?
 This app determines the gender of the input sample alignment using `WisecondorX gender`. The gender-appropriate reference file is passed, along with the alignment, to `WisecondorX predict` for detecting CNVs.
 
+For details on the WisecondorX algorithm, see the references below.
+
+## References
+Straver, R., Sistermans, E.A., Holstege, H., Visser, A., Oudejans, C.B. and Reinders, M.J., 2013. WISECONDOR: detection of fetal aberrations from shallow sequencing maternal plasma based on a within-sample comparison scheme. Nucleic acids research, 42(5), pp.e31-e31.
+
+Huijsdens–van Amsterdam, K., Straver, R., van Maarle, M.C., Knegt, A.C., Van Opstal, D., Sleutels, F., Smeets, D. and Sistermans, E.A., 2018. Mosaic maternal 10qter deletions are associated with FRA10B expansions and may cause false-positive noninvasive prenatal screening results. Genetics in Medicine.
 
 *Developed by Viapath Genome Informatics*
