@@ -43,12 +43,15 @@ export PATH="$HOME/miniconda/bin:$PATH"
 conda install -f -y -c conda-forge -c bioconda wisecondorx=0.2.0
 
 # Create output directory
-outdir=out/wisecondorx
+outdir=out/wisecondorx/Results/wisecondorx
 mkdir -p $outdir
 
 # Convert input bam to numpy zip file for wisecondorx
-mv $input_bam_index $(dirname $input_bam_path)
+mv $input_bam_index_path $(dirname $input_bam_path)
 WisecondorX convert $input_bam_path ${input_bam_prefix}.npz # -binsize --retdist --retthres --gender --gonmapr
+
+# Move references to home directory
+mv $reference_male_path $reference_female_path $HOME
 
 # Run WisecondorX
 wcx_run ${input_bam_prefix}.npz
