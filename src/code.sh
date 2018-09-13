@@ -85,7 +85,7 @@ WisecondorX newref ${female_dir}/*.npz reference_female.npz --cpus 4 --binsize $
 
 ##### Predict CNVs
 # Create output directory
-outdir=out/wisecondorx/Results/wisecondorx
+outdir=out/wisecondorx/Results/wisecondorx_${resolution}
 mkdir -p $outdir
 
 # Convert input bam to numpy zip file for wisecondorx
