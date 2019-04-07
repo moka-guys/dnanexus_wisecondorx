@@ -56,6 +56,13 @@ convert_binsize=$((resolution/20))
 # Download reference bams
 dx download -r ${project_for_newref}:/wisecondorx_reference/
 
+## delete self and downsampled self from reference bams - this depends entirely on first 4 characters of filename ## hack by Wook
+cd wisecondorx_reference
+bam_name=$input_bam_prefix
+bam_start=${bam_name:0:4}
+find . -maxdepth 1 -type f -name ${bam_start}\* -exec rm {} \;
+cd ..
+
 # Convert all bams to numpy zip files
 for file in wisecondorx_reference/*.bam; do
 	prefix=${file%%.bam}
