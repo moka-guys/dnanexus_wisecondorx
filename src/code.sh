@@ -86,8 +86,8 @@ mv wisecondorx_reference/${reference_male_prefix}*.npz $male_dir
 mv wisecondorx_reference/${reference_female_prefix}*.npz $female_dir
 
 # Create references for Male and Female samples
-WisecondorX newref ${male_dir}/*.npz reference_male.npz --cpus 4 --binsize $resolution ## --refsize $ref_refsize
-WisecondorX newref ${female_dir}/*.npz reference_female.npz --cpus 4 --binsize $resolution ## --refsize $ref_refsizes
+WisecondorX newref ${male_dir}/*.npz reference_male.npz --cpus 8 --binsize $resolution ## --refsize $ref_refsize
+WisecondorX newref ${female_dir}/*.npz reference_female.npz --cpus 8 --binsize $resolution ## --refsize $ref_refsizes
 #####
 
 ##### Predict CNVs
