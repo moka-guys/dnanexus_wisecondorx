@@ -44,7 +44,7 @@ bash Miniconda2-latest-Linux-x86_64.sh -b -p $HOME/miniconda
 export PATH="$HOME/miniconda/bin:$PATH"
 
 # Install WisecondorX
-conda install -f -y -c conda-forge -c bioconda wisecondorx=0.2.0
+conda install -f -y -c conda-forge -c bioconda wisecondorx
 
 # Set the binsize for the `Wisecondor convert` command. 
 # All converted BAM files must use a binsize that is a multiple of the input resolution. Here we 
