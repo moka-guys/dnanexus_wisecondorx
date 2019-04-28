@@ -1,6 +1,6 @@
 {
-  "name": "wisecondorx",
-  "title": "WisecondorX",
+  "name": "wisecondorxw_latest",
+  "title": "WisecondorX_WookLatestRemix",
   "summary": "Predict Copy Number Variants.",
   "tags": [
     "Structural Variation",
@@ -74,14 +74,14 @@
     ]
   },
   "details": {
-    "CenterForMedicalGeneticsGhent/WisecondorX release": "v0.2.0",
+    "CenterForMedicalGeneticsGhent/WisecondorX release": "latest",
     "github release": "v1.0"
   },
   "regionalOptions": {
     "aws:us-east-1": {
       "systemRequirements": {
         "main": {
-          "instanceType": "mem2_ssd1_x4"
+          "instanceType": "mem1_ssd1_x8"
         }
       }
     }
