@@ -38,20 +38,6 @@
       "class": "file",
       "patterns": ["*.bai"],
       "optional": false
-    },
-    {
-      "name": "reference_male_prefix",
-      "label": "Prefix for BAM files to use as male reference",
-      "help": "Prefix for BAM files to use as male reference",
-      "class": "string",
-      "optional": false
-    },
-    {
-      "name": "reference_female_prefix",
-      "label": "Prefix for BAM files to use as female reference",
-      "help": "Prefix for BAM files to use as female reference",
-      "class": "string", 
-      "optional": false
     }
   ],
   "outputSpec": [
