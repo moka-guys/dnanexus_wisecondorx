@@ -40,7 +40,7 @@ if [ "$reference_provided" == "false" ] && [ "$controls_provided" == "true" ]; t
 	# Convert all bams to numpy zip files
 	for file in wisecondorx_reference/*.bam; do
 		prefix=${file%%.bam}
-		WisecondorX convert $file ${prefix}.npz --binsize $convert_binsize #--retdist $convert_retdist --retthres $convert_retthresh
+		WisecondorX convert $file ${prefix}.npz --binsize $convert_binsize
 	done
 	###  Create reference
 	WisecondorX newref wisecondorx_reference/*.npz wisecondorx_reference/ref.npz --cpus 8 --binsize $resolution
