@@ -1,28 +1,14 @@
 {
-  "name": "wisecondorxw_latest",
-  "title": "WisecondorX_WookLatestRemix",
+  "name": "wisecondorx1.1.0_v0.3",
+  "title": "WisecondorX_v1.1.0",
   "summary": "Predict Copy Number Variants.",
   "tags": [
     "Structural Variation",
     "VariantCalling"
   ],
   "dxapi": "1.0.0",
+  "version": "0.3.0", 
   "inputSpec": [
-    {
-      "name": "project_for_newref",
-      "label": "WisecondorX newref project",
-      "help": "Project with BAM files in 'wisecondorx_reference/' for creating wisecondorx reference files",
-      "class": "string",
-      "optional": false
-    },
-    {
-      "name": "resolution",
-      "label": "WisecondorX binsize/resolution",
-      "help": "Binsize for output resolution in bp",
-      "class": "int",
-      "default": 10000
-
-    },
     {
       "name": "input_bam",
       "label": "Input BAM (*.bam)",
@@ -38,6 +24,45 @@
       "class": "file",
       "patterns": ["*.bai"],
       "optional": false
+    },
+    {
+      "name": "resolution",
+      "label": "WisecondorX binsize/resolution",
+      "help": "Binsize for output resolution in bp",
+      "class": "int",
+      "default": 100000
+    },
+    {
+      "name": "reference_provided",
+      "label": "State if a numpy reference file is provided",
+      "help": "Choose yes if you are providing a reference file created using the WisecondorX newref function",
+      "class": "boolean",
+      "default": true,
+      "optional": false
+    },
+    {
+      "name": "reference_file",
+      "label": "numpy reference file",
+      "help": "Select the numpy reference file created using the WisecondorX newref function",
+      "class": "file",
+      "patterns": ["*.npz"],
+      "optional": true
+    },
+    {
+      "name": "controls_provided",
+      "label": "State if control BAM files are provided",
+      "help": "Choose yes if you are providing a set of control BAM files. This is ignored if yes is selected for reference_provided.",
+      "class": "boolean",
+      "default": false,
+      "optional": false
+    },
+    {
+      "name": "controls",
+      "label": "Set of control BAM files",
+      "help": "Select Set of control BAM files",
+      "class": "array:file",
+      "patterns": ["*.bam"],
+      "optional": true
     }
   ],
   "outputSpec": [
@@ -60,9 +85,10 @@
     ]
   },
   "details": {
-    "CenterForMedicalGeneticsGhent/WisecondorX release": "latest",
+    "CenterForMedicalGeneticsGhent/WisecondorX release": "1.1.0",
     "github release": "v1.0"
   },
+  "ignoreReuse": false,
   "regionalOptions": {
     "aws:us-east-1": {
       "systemRequirements": {
