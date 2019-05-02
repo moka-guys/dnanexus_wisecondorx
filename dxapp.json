@@ -61,7 +61,7 @@
       "label": "Set of control BAM files",
       "help": "Select Set of control BAM files",
       "class": "array:file",
-      "patterns": ["*.bam"],
+      "patterns": ["*.bam","*.bai"],
       "optional": true
     }
   ],
